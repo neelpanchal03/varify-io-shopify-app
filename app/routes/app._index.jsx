@@ -1,46 +1,38 @@
-import { authenticate } from "../shopify.server";
-import { useEffect } from 'react';
+import {authenticate} from "../shopify.server";
 
 
-// Import Polaris components
 import {
-  Page,
-  Card,
-  Button,
-  Layout,
-  TextContainer,
-  Link,
-  Text,
-  MediaCard,
   BlockStack,
-  InlineGrid
+  Button,
+  Card,
+  InlineGrid,
+  Layout,
+  Link,
+  MediaCard,
+  Page,
+  Text,
+  TextContainer
 } from '@shopify/polaris';
-// Destructure the components you need from the default export
 
-export const loader = async ({ request }) => {
+export const loader = async ({request}) => {
   await authenticate.admin(request);
 
   return null;
 };
 
 
-
-
 export default function Index() {
-  useEffect(() => {
-    // Set up the App Bridge here if needed
-  }, []);
 
   return (
     <Page title="Varify.io Integration">
-      {/*<TitleBar title="Varify.io Integration" />*/}
       <Layout>
         <Layout.Section>
           <Card sectioned>
             <TextContainer>
               <h1>Activate Your Integration on Varify.io</h1>
               <Text as="p">
-                Your Shopify app is installed and ready to connect with <Link target="_blank" url="http://Varify.io">Varify.io</Link>.
+                Your Shopify app is installed and ready to connect with <Link target="_blank"
+                                                                              url="http://Varify.io">Varify.io</Link>.
                 To start syncing your Shopify data and analyze your experiments, please activate the integration
                 from your Varify.io account.
               </Text>
@@ -61,10 +53,11 @@ export default function Index() {
         </Layout.Section>
 
 
-        <Layout.Section >
-          <MediaCard portrait size="small" title="Step 2: Get varify javascript code snippet from varify.io" description="Find your varify javascript code snippet from above instruction click on that, It will open popup and you can follow next step.">
+        <Layout.Section>
+          <MediaCard portrait size="small" title="Step 2: Get varify javascript code snippet from varify.io"
+                     description="Find your varify javascript code snippet from above instruction click on that, It will open popup and you can follow next step.">
             <img
-              alt=""
+              alt="Step 2: Instructions to locate and copy the Varify JavaScript code snippet from Varify.io, which will open in a popup for further steps."
               width="100%"
               height="100%"
               style={{objectFit: 'cover', objectPosition: 'center'}}
@@ -73,10 +66,11 @@ export default function Index() {
           </MediaCard>
         </Layout.Section>
 
-        <Layout.Section >
-          <MediaCard portrait size="small" title="Step 3: Put javascript code snippet in theme" description="After copying from varify.io paste that code snippet in main theme's header file between <head> tags to establise connection between varify.io and store.">
+        <Layout.Section>
+          <MediaCard portrait size="small" title="Step 3: Put javascript code snippet in theme"
+                     description="After copying from varify.io paste that code snippet in main theme's header file between <head> tags to establise connection between varify.io and store.">
             <img
-              alt=""
+              alt="Step 3: Instructions to copy the JavaScript code snippet from Varify.io and paste it into the Shopify theme's header file between <head> tags to connect Varify.io with the store."
               width="100%"
               height="100%"
               style={{objectFit: 'cover', objectPosition: 'center'}}
@@ -86,8 +80,9 @@ export default function Index() {
         </Layout.Section>
 
 
-        <Layout.Section >
-          <MediaCard portrait size="small" title="Step 4: Enable embed app from theme's admin panel" description="Make sure you have enabled ambed app from Theme(live) > Customize > App embeds.">
+        <Layout.Section>
+          <MediaCard portrait size="small" title="Step 4: Enable embed app from theme's admin panel"
+                     description="Make sure you have enabled ambed app from Theme(live) > Customize > App embeds.">
 
           </MediaCard>
         </Layout.Section>
@@ -97,11 +92,18 @@ export default function Index() {
             <TextContainer>
               <h1>How to Activate Integration on Varify.io:</h1>
               <Text as="p">
-                <Link url="#">Read our step-by-step guide</Link><br />
+                <Link url="#">Read our step-by-step guide</Link><br/>
                 <Link url="#">Watch a quick tutorial video</Link>
               </Text>
               <Text as="p">
-                📧 Contact Support: support@varify.io
+                <span style={{textDecoration: 'none'}}>Contact Support:&nbsp;
+                  <Link
+                    url="mailto:support@varify.io"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    support@varify.io
+                  </Link>
+                </span>
               </Text>
             </TextContainer>
           </Card>

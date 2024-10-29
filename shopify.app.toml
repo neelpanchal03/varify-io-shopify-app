@@ -3,7 +3,7 @@
 client_id = "05e0c49b2087210e8071924386ef53e4"
 name = "varify-io"
 handle = "varify-io-3"
-application_url = "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app"
+application_url = "https://5c61-2402-a00-404-9f23-55ae-aa9b-c11f-bd08.ngrok-free.app"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_customer_events,write_pixels"
 
 [auth]
 redirect_urls = [
-  "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app/auth/callback",
-  "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app/auth/shopify/callback",
-  "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app/api/auth/callback"
+  "https://5c61-2402-a00-404-9f23-55ae-aa9b-c11f-bd08.ngrok-free.app/auth/callback",
+  "https://5c61-2402-a00-404-9f23-55ae-aa9b-c11f-bd08.ngrok-free.app/auth/shopify/callback",
+  "https://5c61-2402-a00-404-9f23-55ae-aa9b-c11f-bd08.ngrok-free.app/api/auth/callback"
 ]
 
 [webhooks]

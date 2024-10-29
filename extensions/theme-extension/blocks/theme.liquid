@@ -1,14 +1,14 @@
 <script>
-  setTimeout(function() {
-    Shopify.analytics.publish("varify_local_storage", { len: localStorage.length, account_id: window.varify.iid });
-    Shopify.analytics.publish("varify_session_storage", { len: sessionStorage.length, account_id: window.varify.iid });
+  setTimeout(function () {
+    Shopify.analytics.publish("varifyLocalStorage", {len: localStorage.length, account_id: window.varify.iid});
+    Shopify.analytics.publish("varifySessionStorage", {len: sessionStorage.length, account_id: window.varify.iid});
   }, 500);  // 1000 milliseconds = 1 second
 </script>
 
 {% schema %}
-  {
-    "name": "Varify-io",
-    "target": "body",
-    "settings": []
-  }
+{
+  "name": "Varify-io",
+  "target": "body",
+  "settings": []
+}
 {% endschema %}
