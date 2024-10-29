@@ -92,8 +92,7 @@ export default function Index() {
             <TextContainer>
               <h1>How to Activate Integration on Varify.io:</h1>
               <Text as="p">
-                <Link url="#">Read our step-by-step guide</Link><br/>
-                <Link url="#">Watch a quick tutorial video</Link>
+                <Link url="https://varify.io/en/user-documentation/shopify-integration" target="_blank">Read our step-by-step guide</Link><br/>
               </Text>
               <Text as="p">
                 <span style={{textDecoration: 'none'}}>Contact Support:&nbsp;
