@@ -56,26 +56,26 @@ export default function Index() {
         <Layout.Section>
           <MediaCard portrait size="small" title="Step 2: Get varify javascript code snippet from varify.io"
                      description="Find your varify javascript code snippet from above instruction click on that, It will open popup and you can follow next step.">
-            <img
-              alt="Step 2: Instructions to locate and copy the Varify JavaScript code snippet from Varify.io, which will open in a popup for further steps."
-              width="100%"
-              height="100%"
-              style={{objectFit: 'cover', objectPosition: 'center'}}
-              src="/step_2.png"
-            />
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <img
+                alt="Step 2: Instructions to locate and copy the Varify JavaScript code snippet from Varify.io, which will open in a popup for further steps."
+                style={{maxWidth: '-webkit-fill-available', maxHeight: '-webkit-fill-available'}}
+                src="/step_2.png"
+              />
+            </div>
           </MediaCard>
         </Layout.Section>
 
         <Layout.Section>
           <MediaCard portrait size="small" title="Step 3: Put javascript code snippet in theme"
                      description="After copying from varify.io paste that code snippet in main theme's header file between <head> tags to establise connection between varify.io and store.">
-            <img
-              alt="Step 3: Instructions to copy the JavaScript code snippet from Varify.io and paste it into the Shopify theme's header file between <head> tags to connect Varify.io with the store."
-              width="100%"
-              height="100%"
-              style={{objectFit: 'cover', objectPosition: 'center'}}
-              src="/step_3.png"
-            />
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <img
+                alt="Step 3: Instructions to copy the JavaScript code snippet from Varify.io and paste it into the Shopify theme's header file between <head> tags to connect Varify.io with the store."
+                style={{maxWidth: '-webkit-fill-available', maxHeight: '-webkit-fill-available'}}
+                src="/step_3.png"
+              />
+            </div>
           </MediaCard>
         </Layout.Section>
 
@@ -92,7 +92,8 @@ export default function Index() {
             <TextContainer>
               <h1>How to Activate Integration on Varify.io:</h1>
               <Text as="p">
-                <Link url="https://varify.io/en/user-documentation/shopify-integration" target="_blank">Read our step-by-step guide</Link><br/>
+                <Link url="https://varify.io/en/user-documentation/shopify-integration" target="_blank">Read our
+                  step-by-step guide</Link><br/>
               </Text>
               <Text as="p">
                 <span style={{textDecoration: 'none'}}>Contact Support:&nbsp;
