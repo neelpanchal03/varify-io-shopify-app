@@ -1,8 +1,25 @@
 <script>
-  setTimeout(function () {
+  function waitForStorageDataRAF(callback) {
+    function checkStorage() {
+      const keyPattern = /^varify-experiment-\d+$/;
+      const hasMatchingKey = Object.keys(localStorage).some(key => keyPattern.test(key)) ||
+        Object.keys(sessionStorage).some(key => keyPattern.test(key));
+
+      if (hasMatchingKey) {
+        callback();
+      } else {
+        requestAnimationFrame(checkStorage);
+      }
+    }
+
+    requestAnimationFrame(checkStorage);
+  }
+
+  waitForStorageDataRAF(() => {
     Shopify.analytics.publish("varifyLocalStorage", {len: localStorage.length, account_id: window.varify.iid});
+    console.log("inside wait storage")
     Shopify.analytics.publish("varifySessionStorage", {len: sessionStorage.length, account_id: window.varify.iid});
-  }, 500);  // 1000 milliseconds = 1 second
+  });
 </script>
 
 {% schema %}
