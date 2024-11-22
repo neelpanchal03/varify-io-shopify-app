@@ -1,5 +1,5 @@
 <script>
-  function waitForStorageDataRAF(callback, timeout = 1000) {
+  const waitForStorageDataRAF = (callback, timeout = 1000) => {
     const startTime = performance.now();
 
     const checkStorage = () => {
@@ -10,18 +10,18 @@
       if (hasMatchingKey) {
         callback();
       } else if (performance.now() - startTime < timeout) {
-        requestAnimationFrame(checkStorage);
+        requestAnimationFrame(() => checkStorage());
       } else {
         console.warn("Timeout reached while waiting for storage keys.");
       }
     };
 
-    requestAnimationFrame(checkStorage);
-  }
+    requestAnimationFrame(() => checkStorage());
+  };
 
   waitForStorageDataRAF(() => {
-    Shopify.analytics.publish("varifyLocalStorage", {len: localStorage.length, account_id: window.varify.iid});
-    Shopify.analytics.publish("varifySessionStorage", {len: sessionStorage.length, account_id: window.varify.iid});
+    Shopify.analytics.publish("varifyLocalStorage", { len: localStorage.length, account_id: window.varify.iid });
+    Shopify.analytics.publish("varifySessionStorage", { len: sessionStorage.length, account_id: window.varify.iid });
   });
 </script>
 
