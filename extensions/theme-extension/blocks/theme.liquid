@@ -20,8 +20,12 @@
   };
 
   waitForStorageDataRAF(() => {
-    Shopify.analytics.publish("varifyLocalStorage", { len: localStorage.length, account_id: window.varify.iid });
-    Shopify.analytics.publish("varifySessionStorage", { len: sessionStorage.length, account_id: window.varify.iid });
+    if (typeof window.Shopify?.analytics?.publish === 'function') {
+      Shopify.analytics.publish("varifyLocalStorage", { len: localStorage.length, account_id: window.varify.iid });
+      Shopify.analytics.publish("varifySessionStorage", { len: sessionStorage.length, account_id: window.varify.iid });
+    } else {
+      console.warn("Shopify.analytics.publish is not a function.");
+    }
   });
 </script>
 
