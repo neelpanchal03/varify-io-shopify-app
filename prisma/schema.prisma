@@ -34,6 +34,7 @@ model Session {
 model VarifyExperimentData {
   id                Int      @id @default(autoincrement())
   varify_account_id String
+  storage_type      String
   order_id          String
   experiment_data   Json
   order_revenue     Float
