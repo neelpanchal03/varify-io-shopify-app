@@ -82,7 +82,7 @@ export default function Index() {
 
         <Layout.Section>
           <MediaCard portrait size="small" title="Step 4: Enable shopify tacker from varify.io tracking options."
-                     description="Make sure you have selected Shopify App as analitics connection in trcking setup">
+                     description="Make sure you have selected Shopify App as analitics connection in tracking setup">
 
           </MediaCard>
         </Layout.Section>
