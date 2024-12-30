@@ -81,8 +81,8 @@ export default function Index() {
 
 
         <Layout.Section>
-          <MediaCard portrait size="small" title="Step 4: Enable embed app from theme's admin panel"
-                     description="Make sure you have enabled ambed app from Theme(live) > Customize > App embeds.">
+          <MediaCard portrait size="small" title="Step 4: Enable shopify tacker from varify.io tracking options."
+                     description="Make sure you have selected Shopify App as analitics connection in trcking setup">
 
           </MediaCard>
         </Layout.Section>

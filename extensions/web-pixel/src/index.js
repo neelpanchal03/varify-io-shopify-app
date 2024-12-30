@@ -3,69 +3,61 @@ import {register} from "@shopify/web-pixels-extension";
 register(({analytics, browser, init, settings}) => {
 
   analytics.subscribe('varifyLocalStorage', async (event) => {
-    let variationData = {};
-    const {len: totalKeys, account_id: accountId} = event.customData;
 
-    for (let index = 0; index < totalKeys; index++) {
-      const key = await browser.localStorage.key(index);
+    const {experimentId, variationId, teamId, storageType} = event.customData;
+    const validVariationId = variationId !== undefined ? variationId : null;
 
-      if (key.startsWith('varify-experiment-')) {
-        const value = await browser.localStorage.getItem(key);
-        const {variationId} = JSON.parse(value);
-        const experimentKey = key.replace('varify-experiment-', '');
-        variationData[experimentKey] = variationId;
-      }
+    const existingDataRaw = await browser.sessionStorage.getItem('varify-data');
+    const existingData = existingDataRaw ? JSON.parse(existingDataRaw) : {};
+
+    if (!existingData.data) {
+      existingData.data = [];
+
     }
 
-    await browser.localStorage.setItem('varify', accountId);
+    const experimentEntry = {[experimentId]: validVariationId};
 
-    if (Object.keys(variationData).length !== 0) {
-      await browser.localStorage.setItem('varify-data', JSON.stringify(variationData));
-    }
-  });
+    existingData.data = existingData.data.filter(
+      entry => !entry.hasOwnProperty(experimentId)
+    );
 
-  analytics.subscribe('varifySessionStorage', async (event) => {
-    let variationData = {};
-    const {len: totalKeys, account_id: accountId} = event.customData;
+    existingData.data.push(experimentEntry);
+    existingData.teamId = teamId;
+    existingData.storageType = storageType;
+    existingData.data = existingData.data.filter(
+      entry => Object.keys(entry).length > 0
+    );
 
-    for (let index = 0; index < totalKeys; index++) {
-      const key = await browser.sessionStorage.key(index);
-
-      if (key.startsWith('varify-experiment-')) {
-        const value = await browser.sessionStorage.getItem(key);
-        const {variationId} = JSON.parse(value);
-        const experimentKey = key.replace('varify-experiment-', '');
-        variationData[experimentKey] = variationId;
-      }
-    }
-
-    await browser.localStorage.setItem('varify', accountId);
-
-    if (Object.keys(variationData).length !== 0) {
-      await browser.localStorage.setItem('varify-data', JSON.stringify(variationData));
-    }
+    await browser.sessionStorage.setItem('varify-data', JSON.stringify(existingData));
   });
 
   analytics.subscribe('checkout_completed', async (event) => {
+
     const {data: {checkout: {order: {id: orderNumber} = {}, subtotalPrice: {amount: orderRevenue} = {}} = {}}} = event;
-    const localVariationData = await browser.localStorage.getItem('varify-data');
-    const storedAccountId = await browser.localStorage.getItem('varify');
+    const localVariationData = await browser.sessionStorage.getItem('varify-data');
+    const parsedData = JSON.parse(localVariationData);
+    const storedAccountId = parsedData.teamId;
+    const storedData = parsedData.data;
+    const storageType = parsedData.storageType;
 
     try {
-      await fetch('https://5c61-2402-a00-404-9f23-55ae-aa9b-c11f-bd08.ngrok-free.app/store_data', {
+      await fetch('https://3b8c-103-85-10-72.ngrok-free.app/store_data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+
         body: JSON.stringify({
           orderNumber,
           orderRevenue,
           accountId: storedAccountId,
-          data: localVariationData,
+          data: storedData,
+          storageType: storageType,
         }),
       });
 
-      browser.localStorage.removeItem('varify-data');
+      browser.sessionStorage.removeItem('varify-data');
+
     } catch (error) {
       console.error('Error sending data', error);
     }
