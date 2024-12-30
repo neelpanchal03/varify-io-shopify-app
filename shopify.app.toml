@@ -1,29 +1,29 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "05e0c49b2087210e8071924386ef53e4"
+application_url = "https://date-equilibrium-observations-representations.trycloudflare.com"
+embedded = true
 name = "varify-io"
 handle = "varify-io-3"
-application_url = "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app"
-embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
 dev_store_url = "varify-a-b-testing.myshopify.com"
 include_config_on_deploy = true
 
+[webhooks]
+api_version = "2024-10"
+
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = ""
+scopes = "read_customer_events,write_pixels"
 
 [auth]
 redirect_urls = [
-  "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app/auth/callback",
-  "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app/auth/shopify/callback",
-  "https://6a9c-2401-4900-8898-7fa5-4509-1fe1-68d7-aa8.ngrok-free.app/api/auth/callback"
+  "https://date-equilibrium-observations-representations.trycloudflare.com/auth/callback",
+  "https://date-equilibrium-observations-representations.trycloudflare.com/auth/shopify/callback",
+  "https://date-equilibrium-observations-representations.trycloudflare.com/api/auth/callback"
 ]
-
-[webhooks]
-api_version = "2024-10"
 
 [pos]
 embedded = false

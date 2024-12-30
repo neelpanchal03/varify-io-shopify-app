@@ -9,9 +9,29 @@ import { authenticate } from "../shopify.server";
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export const loader = async ({ request }) => {
-  await authenticate.admin(request);
+  const  {  admin}= await authenticate.admin(request);
+  const random = Math.floor(Math.random() * 999999);
+  const mutation = `
+    mutation {
+      webPixelCreate(webPixel: { settings: "{\\"accountID\\": \\"${random}\\"}" }) {
+        userErrors {
+          code
+          field
+          message
+        }
+        webPixel {
+          settings
+          id
+        }
+      }
+    }
+  `;
+
+  const response = await admin.graphql(mutation);
 
   return json({ apiKey: process.env.SHOPIFY_API_KEY || "" });
+
+
 };
 
 export default function App() {
@@ -21,7 +41,7 @@ export default function App() {
     <AppProvider isEmbeddedApp apiKey={apiKey}>
       <NavMenu>
         <Link to="/app" rel="home">
-          Home
+          Varify io
         </Link>
       </NavMenu>
       <Outlet />
