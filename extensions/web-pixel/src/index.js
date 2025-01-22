@@ -2,10 +2,9 @@ import {register} from "@shopify/web-pixels-extension";
 
 register(({analytics, browser, init, settings}) => {
 
-  analytics.subscribe('varifyLocalStorage', async (event) => {
-
-    const {experimentId, variationId, teamId, storageType} = event.customData;
-    const validVariationId = variationId !== undefined ? variationId : null;
+  analytics.subscribe('varify', async (event) => {
+    const {varify_experimentId, varify_variationId, teamId, storageType} = event.customData;
+    const validVariationId = varify_variationId !== undefined ? varify_variationId : null;
 
     const existingDataRaw = await browser.sessionStorage.getItem('varify-data');
     const existingData = existingDataRaw ? JSON.parse(existingDataRaw) : {};
@@ -15,10 +14,10 @@ register(({analytics, browser, init, settings}) => {
 
     }
 
-    const experimentEntry = {[experimentId]: validVariationId};
+    const experimentEntry = {[varify_experimentId]: validVariationId};
 
     existingData.data = existingData.data.filter(
-      entry => !entry.hasOwnProperty(experimentId)
+      entry => !entry.hasOwnProperty(varify_experimentId)
     );
 
     existingData.data.push(experimentEntry);
