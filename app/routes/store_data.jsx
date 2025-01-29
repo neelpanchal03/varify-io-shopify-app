@@ -1,8 +1,11 @@
 import prisma from "../db.server.js";
 import {cors} from "remix-utils/cors";
-import {json} from "@remix-run/node"; // or cloudflare/deno
+import {json} from "@remix-run/node";
 
 export async function action({request}) {
+  if (request.method === "OPTIONS") {
+    return cors(request, new Response(null, {status: 204}));
+  }
   if (request.method !== "POST") {
     return cors(request, json({message: "Method Not Allowed. Use POST."}, {status: 405}));
   }
