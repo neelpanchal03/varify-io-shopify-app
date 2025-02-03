@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "fc9305b77355d776c64db4fe678764e2"
-application_url = "https://7eb4-2401-4900-8899-74bc-5038-682e-a774-aa33.ngrok-free.app"
+application_url = "https://ecommerce.varify.io"
 embedded = true
 name = "Varify - A/B Testing"
 handle = "varify-a-b-testing"
@@ -20,10 +20,22 @@ scopes = "read_customer_events,write_pixels"
 
 [auth]
 redirect_urls = [
-  "https://7eb4-2401-4900-8899-74bc-5038-682e-a774-aa33.ngrok-free.app/auth/callback",
-  "https://7eb4-2401-4900-8899-74bc-5038-682e-a774-aa33.ngrok-free.app/auth/shopify/callback",
-  "https://7eb4-2401-4900-8899-74bc-5038-682e-a774-aa33.ngrok-free.app/api/auth/callback"
+  "https://ecommerce.varify.io/auth/callback",
+  "https://ecommerce.varify.io/auth/shopify/callback",
+  "https://ecommerce.varify.io/api/auth/callback"
 ]
 
 [pos]
 embedded = false
+
+[[webhooks.subscriptions]]
+compliance_topics = ["customers/data_request"]
+uri = "/webhooks"
+
+[[webhooks.subscriptions]]
+compliance_topics = ["customers/redact"]
+uri = "/webhooks"
+
+[[webhooks.subscriptions]]
+compliance_topics = ["shop/redact"]
+uri = "/webhooks"
