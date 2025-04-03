@@ -69,7 +69,7 @@ export default function Index() {
                 <Text variant="headingMd" as="h2">Activation of the Shopify Tracking in Varify</Text>
 
                 <List type="number">
-                  <List.Item>Log in to your Verify.io account.</List.Item>
+                  <List.Item>Log in to your Varify.io account.</List.Item>
                   <List.Item>
                     Go to <Text as="span" fontWeight="bold">Tracking Setup</Text>
                   </List.Item>
