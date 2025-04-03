@@ -1,18 +1,8 @@
 import {authenticate} from "../shopify.server";
 
 
-import {
-  BlockStack,
-  Button,
-  Card,
-  InlineGrid,
-  Layout,
-  Link,
-  MediaCard,
-  Page,
-  Text,
-  TextContainer
-} from '@shopify/polaris';
+import {BlockStack, Button, Card, InlineGrid, Layout, Link, List, Page, Text, TextContainer} from '@shopify/polaris';
+import React from "react";
 
 export const loader = async ({request}) => {
   await authenticate.admin(request);
@@ -24,77 +14,117 @@ export const loader = async ({request}) => {
 export default function Index() {
 
   return (
-    <Page title="Varify.io Integration">
+    <Page title="Varify - Shopify Tracking App">
       <Layout>
         <Layout.Section>
           <Card sectioned>
             <TextContainer>
-              <h1>Activate Your Integration on Varify.io</h1>
-              <Text as="p">
-                Your Shopify app is installed and ready to connect with <Link target="_blank"
-                                                                              url="http://Varify.io">Varify.io</Link>.
-                To start syncing your Shopify data and analyze your experiments, please activate the integration
-                from your Varify.io account.
+              <Text>
+                <Text as="span" fontWeight="bold">Congratulations</Text> – your Varify Shopify Tracking App is
+                installed!
               </Text>
             </TextContainer>
           </Card>
         </Layout.Section>
+
         <Layout.Section>
-          <Card roundedAbove="sm">
-            <BlockStack gap="200">
-              <InlineGrid columns="1fr auto">
-                <Text as="h2" variant="headingSm">
-                  Step 1: Login in to your varify.io account.
+          <Card sectioned>
+            <BlockStack gap="400">
+              <TextContainer>
+                <InlineGrid columns="1fr auto" gap="100">
+                  <Text as="span">
+                    If you don't have an account yet, you can sign up for free.
+                  </Text>
+                  <Button target="_blank" url="https://varify.io/en/registration/">
+                    Varify.io Registration
+                  </Button>
+                </InlineGrid>
+                <Text>
+                  To use the Varify Shopify Tracking App, you need to have a Varify A/B Testing account set up, the
+                  Varify script installed on your website, your tracking setup configured with Google Analytics 4, and
+                  the test evaluation set to GA4 and Varify.
                 </Text>
-                <Button target="_blank" url="http://varify.io">Varify.io</Button>
-              </InlineGrid>
+              </TextContainer>
+
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <img
+                  alt="Step 2: Instructions to locate and copy the Varify JavaScript code snippet from Varify.io, which will open in a popup for further steps."
+                  style={{
+                    width: '100%',
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                  src="/tracking_setup.png"
+                />
+              </div>
             </BlockStack>
           </Card>
         </Layout.Section>
 
 
         <Layout.Section>
-          <MediaCard portrait size="small" title="Step 2: Get varify javascript code snippet from varify.io"
-                     description="Find your varify javascript code snippet from above instruction click on that, It will open popup and you can follow next step.">
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              <img
-                alt="Step 2: Instructions to locate and copy the Varify JavaScript code snippet from Varify.io, which will open in a popup for further steps."
-                style={{maxWidth: '-webkit-fill-available', maxHeight: '-webkit-fill-available'}}
-                src="/step_2.png"
-              />
-            </div>
-          </MediaCard>
+          <Card sectioned>
+            <BlockStack gap="400">
+              <TextContainer>
+                <Text variant="headingMd" as="h2">Activation of the Shopify Tracking in Varify</Text>
+
+                <List type="number">
+                  <List.Item>Log in to your Varify.io account.</List.Item>
+                  <List.Item>
+                    Go to <Text as="span" fontWeight="bold">Tracking Setup</Text>
+                  </List.Item>
+                  <List.Item>
+                    Click on <Text as="span" fontWeight="bold">Advanced</Text>
+                  </List.Item>
+                  <List.Item>
+                    Activate <Text as="span" fontWeight="bold">Use Shopify Data</Text>
+                  </List.Item>
+                </List>
+              </TextContainer>
+
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <img
+                  alt="Step 2: Instructions to locate and copy the Varify JavaScript code snippet from Varify.io, which will open in a popup for further steps."
+                  style={{
+                    width: '100%',
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                  src="/advanced_setup.png"
+                />
+              </div>
+            </BlockStack>
+          </Card>
         </Layout.Section>
 
         <Layout.Section>
-          <MediaCard portrait size="small" title="Step 3: Put javascript code snippet in theme"
-                     description="After copying from varify.io paste that code snippet in main theme's header file between <head> tags to establise connection between varify.io and store.">
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              <img
-                alt="Step 3: Instructions to copy the JavaScript code snippet from Varify.io and paste it into the Shopify theme's header file between <head> tags to connect Varify.io with the store."
-                style={{maxWidth: '-webkit-fill-available', maxHeight: '-webkit-fill-available'}}
-                src="/step_3.png"
-              />
-            </div>
-          </MediaCard>
-        </Layout.Section>
+          <Card sectioned>
+            <BlockStack gap="400">
+              <TextContainer>
+                <Text variant="headingMd" as="h2">Evaluation of your Experiment results with the Shopify Tracking
+                  data</Text>
+                <List type="number">
+                  <List.Item>Start a new Experiment</List.Item>
+                  <List.Item>Go to <Text as="span" fontWeight="bold">Results</Text></List.Item>
+                  <List.Item>Add Shopify Goal (Conversion or Revenue)</List.Item>
+                  <List.Item>Data is updated once a day after the Goal is added</List.Item>
+                </List>
+              </TextContainer>
 
-
-        <Layout.Section>
-          <MediaCard portrait size="small" title="Step 4: Enable shopify tracker from varify.io tracking options."
-                     description="Make sure you have selected Shopify App as analitics connection in tracking setup">
-
-          </MediaCard>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <img
+                  alt="Step 3: Instructions to copy the JavaScript code snippet from Varify.io and paste it into the Shopify theme's header file between <head> tags to connect Varify.io with the store."
+                  style={{maxWidth: '100%', height: 'auto'}}
+                  src="/experiment_result.png"
+                />
+              </div>
+            </BlockStack>
+          </Card>
         </Layout.Section>
 
         <Layout.Section secondary>
           <Card title="Need Help?" sectioned>
             <TextContainer>
-              <h1>How to Activate Integration on Varify.io:</h1>
-              <Text as="p">
-                <Link url="https://varify.io/en/user-documentation/shopify-integration" target="_blank">Read our
-                  step-by-step guide</Link><br/>
-              </Text>
               <Text as="p">
                 <span style={{textDecoration: 'none'}}>Contact Support:&nbsp;
                   <Link
