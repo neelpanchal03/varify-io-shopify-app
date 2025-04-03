@@ -69,7 +69,7 @@ export default function Index() {
                 <Text variant="headingMd" as="h2">Activation of the Shopify Tracking in Varify</Text>
 
                 <List type="number">
-                  <List.Item>Login in to your varify.io account</List.Item>
+                  <List.Item>Log in to your Verify.io account.</List.Item>
                   <List.Item>
                     Go to <Text as="span" fontWeight="bold">Tracking Setup</Text>
                   </List.Item>
@@ -125,10 +125,6 @@ export default function Index() {
         <Layout.Section secondary>
           <Card title="Need Help?" sectioned>
             <TextContainer>
-              <Text as="p">Documentation about how to integrate Varify.io with shopify:&nbsp;
-                <Link url="https://varify.io/en/user-documentation/shopify-integration" target="_blank">Read our
-                  step-by-step guide</Link><br/>
-              </Text>
               <Text as="p">
                 <span style={{textDecoration: 'none'}}>Contact Support:&nbsp;
                   <Link
